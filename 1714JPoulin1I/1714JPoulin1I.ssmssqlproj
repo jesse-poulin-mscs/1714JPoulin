@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="1714JPoulin1I">
+  <Items>
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="DESKTOP-HC4N0UF:DESKTOP-HC4N0UF\vynlo">
+          <Created>2019-10-05T00:51:55.3661739-05:00</Created>
+          <Type>SQL</Type>
+          <Server>DESKTOP-HC4N0UF</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB>EZAuto</InitialDB>
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="EZAuto.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-HC4N0UF:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-HC4N0UF</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>EZAuto.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items>
+        <FileNode Name="JPoulinEx1I Entities.docx">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>JPoulinEx1I Entities.docx</FullPath>
+        </FileNode>
+        <FileNode Name="JpoulinEx1I User Stories and Description.docx">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>JpoulinEx1I User Stories and Description.docx</FullPath>
+        </FileNode>
+        <FileNode Name="jpoulinEx1I1.png">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>jpoulinEx1I1.png</FullPath>
+        </FileNode>
+        <FileNode Name="jpoulinEx1I2.png">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>jpoulinEx1I2.png</FullPath>
+        </FileNode>
+        <FileNode Name="jpoulinEx1I3.png">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>jpoulinEx1I3.png</FullPath>
+        </FileNode>
+        <FileNode Name="jpoulinEx1I4.png">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>jpoulinEx1I4.png</FullPath>
+        </FileNode>
+        <FileNode Name="jpoulinEx1I5.png">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>jpoulinEx1I5.png</FullPath>
+        </FileNode>
+        <FileNode Name="jpoulinEx1I6.png">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>jpoulinEx1I6.png</FullPath>
+        </FileNode>
+        <FileNode Name="jpoulinEx1I7.png">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>jpoulinEx1I7.png</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>
