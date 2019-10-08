@@ -5,13 +5,16 @@ VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "1714JPoulin1I", "1714JPoulin1I\1714JPoulin1I.ssmssqlproj", "{4A5375C0-F063-4212-8B36-109ADF759639}"
 EndProject
+Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "1714jpoulin2a", "1714jpoulin2a\1714jpoulin2a.ssmssqlproj", "{77F87906-D2E6-4F8A-8BC1-36AF61E5D952}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Default|Default = Default|Default
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{306CA9A4-42FB-4CD2-BCF1-7D548BEB3648}.Default|Default.ActiveCfg = Default
+		{97816CCC-84C2-4FBA-B3E2-C2075FFF1629}.Default|Default.ActiveCfg = Default
 		{4A5375C0-F063-4212-8B36-109ADF759639}.Default|Default.ActiveCfg = Default
+		{77F87906-D2E6-4F8A-8BC1-36AF61E5D952}.Default|Default.ActiveCfg = Default
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
