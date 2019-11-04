@@ -17,9 +17,6 @@ FROM  Apartments INNER JOIN
 SELECT People.Id, People.LastName + N', ' + People.FirstName AS Tenant, Invoices.Id AS InvoiceId, Invoices.DueDate, Receipts.ReceiptDate, Receipts.Amount AS [Amount Receieved]
 FROM  People INNER JOIN
          Invoices ON People.Id = Invoices.Id INNER JOIN
-         Receipts ON Invoices.Id = Receipts.Invoice_Id
+         Receipts ON Invoices.Id = Receipts.Invoice_Id INNER JOIN
+         Apartments ON People.Id = Apartments.Tenant_Id AND Invoices.Apartment_Id = Apartments.Id
 
-SELECT People.Id, People.LastName + N', ' + People.FirstName AS Tenant, Invoices.Id AS InvoiceId, Invoices.DueDate, Receipts.Amount AS [Amount Receieved], Receipts.ReceiptDate
-FROM  People INNER JOIN
-         Invoices ON People.Id = Invoices.Id INNER JOIN
-         Receipts ON Invoices.Id = Receipts.Invoice_Id

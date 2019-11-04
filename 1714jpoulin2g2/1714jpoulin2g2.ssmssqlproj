@@ -28,7 +28,32 @@
       </Items>
     </LogicalFolder>
     <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
-      <Items />
+      <Items>
+        <FileNode Name="1714jpoulin2g1 Screenshot.png">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>1714jpoulin2g1 Screenshot.png</FullPath>
+        </FileNode>
+        <FileNode Name="1714jpoulin2g2 Screenshot.png">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>1714jpoulin2g2 Screenshot.png</FullPath>
+        </FileNode>
+        <FileNode Name="1714jpoulin2g3 Screenshot.png">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>1714jpoulin2g3 Screenshot.png</FullPath>
+        </FileNode>
+        <FileNode Name="1714jpoulin2g4 Diagram Screenshot.png">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>1714jpoulin2g4 Diagram Screenshot.png</FullPath>
+        </FileNode>
+      </Items>
     </LogicalFolder>
   </Items>
 </SqlWorkbenchSqlProject>
