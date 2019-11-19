@@ -1,0 +1,556 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EZAutoModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="EZAutoModelStoreContainer">
+    <EntitySet Name="People" EntityType="EZAutoModel.Store.People" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Subscriptions" EntityType="EZAutoModel.Store.Subscriptions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RepairShops" EntityType="EZAutoModel.Store.RepairShops" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PartStores" EntityType="EZAutoModel.Store.PartStores" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Reviews" EntityType="EZAutoModel.Store.Reviews" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Requests" EntityType="EZAutoModel.Store.Requests" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Quotes" EntityType="EZAutoModel.Store.Quotes" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="PersonRequest" Association="EZAutoModel.Store.PersonRequest">
+      <End Role="Person" EntitySet="People" />
+      <End Role="Request" EntitySet="Requests" />
+    </AssociationSet>
+    <AssociationSet Name="RequestQuote" Association="EZAutoModel.Store.RequestQuote">
+      <End Role="Request" EntitySet="Requests" />
+      <End Role="Quote" EntitySet="Quotes" />
+    </AssociationSet>
+    <AssociationSet Name="RepairShopQuote" Association="EZAutoModel.Store.RepairShopQuote">
+      <End Role="RepairShop" EntitySet="RepairShops" />
+      <End Role="Quote" EntitySet="Quotes" />
+    </AssociationSet>
+    <AssociationSet Name="RepairShopPerson" Association="EZAutoModel.Store.RepairShopPerson">
+      <End Role="RepairShop" EntitySet="RepairShops" />
+      <End Role="Person" EntitySet="People" />
+    </AssociationSet>
+    <AssociationSet Name="RepairShopReview" Association="EZAutoModel.Store.RepairShopReview">
+      <End Role="RepairShop" EntitySet="RepairShops" />
+      <End Role="Review" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="PartStoreReview" Association="EZAutoModel.Store.PartStoreReview">
+      <End Role="PartStore" EntitySet="PartStores" />
+      <End Role="Review" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="PartStorePerson" Association="EZAutoModel.Store.PartStorePerson">
+      <End Role="PartStore" EntitySet="PartStores" />
+      <End Role="Person" EntitySet="People" />
+    </AssociationSet>
+    <AssociationSet Name="PersonSubscription" Association="EZAutoModel.Store.PersonSubscription">
+      <End Role="Person" EntitySet="People" />
+      <End Role="Subscription" EntitySet="Subscriptions" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="People">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="State" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="Zip" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="RepairShop_Id" Type="int" Nullable="true" />
+    <Property Name="PartStore_Id" Type="int" Nullable="true" />
+    <Property Name="Subscription_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Subscriptions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Price" Type="decimal" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RepairShops">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RepairShopName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="RepairShopAddress" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="RepairShopCity" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="RepairShopState" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RepairShopZip" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="RepairShopPhone" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="RepairShopEmail" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PartStores">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartStoreName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="PartStoreAddress" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="PartStoreCity" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="PartStoreState" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PartStoreZip" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="PartStorePhone" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="PartStoreEmail" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Reviews">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReviewScore" Type="int" Nullable="false" />
+    <Property Name="ReviewDescription" Type="nvarchar" Nullable="false" MaxLength="256" />
+    <Property Name="RepairShop_Id" Type="int" Nullable="false" />
+    <Property Name="PartStore_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Requests">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RequestDescription" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Person_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Quotes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuotePrice" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Request_Id" Type="int" Nullable="false" />
+    <Property Name="RepairShop_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="PersonRequest">
+    <End Role="Person" Type="EZAutoModel.Store.People" Multiplicity="1" />
+    <End Role="Request" Type="EZAutoModel.Store.Requests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="Person_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RequestQuote">
+    <End Role="Request" Type="EZAutoModel.Store.Requests" Multiplicity="1" />
+    <End Role="Quote" Type="EZAutoModel.Store.Quotes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Request">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Quote">
+        <PropertyRef Name="Request_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RepairShopQuote">
+    <End Role="RepairShop" Type="EZAutoModel.Store.RepairShops" Multiplicity="1" />
+    <End Role="Quote" Type="EZAutoModel.Store.Quotes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RepairShop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Quote">
+        <PropertyRef Name="RepairShop_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RepairShopPerson">
+    <End Role="RepairShop" Type="EZAutoModel.Store.RepairShops" Multiplicity="0..1" />
+    <End Role="Person" Type="EZAutoModel.Store.People" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RepairShop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Person">
+        <PropertyRef Name="RepairShop_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RepairShopReview">
+    <End Role="RepairShop" Type="EZAutoModel.Store.RepairShops" Multiplicity="1" />
+    <End Role="Review" Type="EZAutoModel.Store.Reviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RepairShop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="RepairShop_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PartStoreReview">
+    <End Role="PartStore" Type="EZAutoModel.Store.PartStores" Multiplicity="1" />
+    <End Role="Review" Type="EZAutoModel.Store.Reviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PartStore">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="PartStore_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PartStorePerson">
+    <End Role="PartStore" Type="EZAutoModel.Store.PartStores" Multiplicity="0..1" />
+    <End Role="Person" Type="EZAutoModel.Store.People" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PartStore">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Person">
+        <PropertyRef Name="PartStore_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PersonSubscription">
+    <End Role="Person" Type="EZAutoModel.Store.People" Multiplicity="*" />
+    <End Role="Subscription" Type="EZAutoModel.Store.Subscriptions" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Subscription">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Person">
+        <PropertyRef Name="Subscription_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="EZAutoModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="EZAutoModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="People" EntityType="EZAutoModel.Person" />
+          <EntitySet Name="Subscriptions" EntityType="EZAutoModel.Subscription" />
+          <EntitySet Name="RepairShops" EntityType="EZAutoModel.RepairShop" />
+          <EntitySet Name="PartStores" EntityType="EZAutoModel.PartStore" />
+          <EntitySet Name="Reviews" EntityType="EZAutoModel.Review" />
+          <EntitySet Name="Requests" EntityType="EZAutoModel.Request" />
+          <EntitySet Name="Quotes" EntityType="EZAutoModel.Quote" />
+          <AssociationSet Name="PersonRequest" Association="EZAutoModel.PersonRequest">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Request" EntitySet="Requests" />
+          </AssociationSet>
+          <AssociationSet Name="RequestQuote" Association="EZAutoModel.RequestQuote">
+            <End Role="Request" EntitySet="Requests" />
+            <End Role="Quote" EntitySet="Quotes" />
+          </AssociationSet>
+          <AssociationSet Name="RepairShopQuote" Association="EZAutoModel.RepairShopQuote">
+            <End Role="RepairShop" EntitySet="RepairShops" />
+            <End Role="Quote" EntitySet="Quotes" />
+          </AssociationSet>
+          <AssociationSet Name="RepairShopPerson" Association="EZAutoModel.RepairShopPerson">
+            <End Role="RepairShop" EntitySet="RepairShops" />
+            <End Role="Person" EntitySet="People" />
+          </AssociationSet>
+          <AssociationSet Name="RepairShopReview" Association="EZAutoModel.RepairShopReview">
+            <End Role="RepairShop" EntitySet="RepairShops" />
+            <End Role="Review" EntitySet="Reviews" />
+          </AssociationSet>
+          <AssociationSet Name="PartStoreReview" Association="EZAutoModel.PartStoreReview">
+            <End Role="PartStore" EntitySet="PartStores" />
+            <End Role="Review" EntitySet="Reviews" />
+          </AssociationSet>
+          <AssociationSet Name="PartStorePerson" Association="EZAutoModel.PartStorePerson">
+            <End Role="PartStore" EntitySet="PartStores" />
+            <End Role="Person" EntitySet="People" />
+          </AssociationSet>
+          <AssociationSet Name="PersonSubscription" Association="EZAutoModel.PersonSubscription">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Subscription" EntitySet="Subscriptions" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="State" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="Zip" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Requests" Relationship="EZAutoModel.PersonRequest" FromRole="Person" ToRole="Request" />
+          <NavigationProperty Name="RepairShop" Relationship="EZAutoModel.RepairShopPerson" FromRole="Person" ToRole="RepairShop" />
+          <NavigationProperty Name="PartStore" Relationship="EZAutoModel.PartStorePerson" FromRole="Person" ToRole="PartStore" />
+          <NavigationProperty Name="Subscription" Relationship="EZAutoModel.PersonSubscription" FromRole="Person" ToRole="Subscription" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Subscription">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Price" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="EZAutoModel.PersonSubscription" FromRole="Subscription" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="RepairShop">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RepairShopName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="RepairShopAddress" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="RepairShopCity" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="RepairShopState" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="RepairShopZip" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="RepairShopPhone" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Quotes" Relationship="EZAutoModel.RepairShopQuote" FromRole="RepairShop" ToRole="Quote" />
+          <NavigationProperty Name="Employee" Relationship="EZAutoModel.RepairShopPerson" FromRole="RepairShop" ToRole="Person" />
+          <NavigationProperty Name="Reviews" Relationship="EZAutoModel.RepairShopReview" FromRole="RepairShop" ToRole="Review" />
+          <Property Name="RepairShopEmail" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="PartStore">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PartStoreName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PartStoreAddress" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PartStoreCity" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="PartStoreState" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="PartStoreZip" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="PartStorePhone" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Reviews" Relationship="EZAutoModel.PartStoreReview" FromRole="PartStore" ToRole="Review" />
+          <NavigationProperty Name="Employee" Relationship="EZAutoModel.PartStorePerson" FromRole="PartStore" ToRole="Person" />
+          <Property Name="PartStoreEmail" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReviewScore" Type="Int32" Nullable="false" />
+          <Property Name="ReviewDescription" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="RepairShop" Relationship="EZAutoModel.RepairShopReview" FromRole="Review" ToRole="RepairShop" />
+          <NavigationProperty Name="PartStore" Relationship="EZAutoModel.PartStoreReview" FromRole="Review" ToRole="PartStore" />
+        </EntityType>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RequestDescription" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Person" Relationship="EZAutoModel.PersonRequest" FromRole="Request" ToRole="Person" />
+          <NavigationProperty Name="Quotes" Relationship="EZAutoModel.RequestQuote" FromRole="Request" ToRole="Quote" />
+        </EntityType>
+        <EntityType Name="Quote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuotePrice" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="Request" Relationship="EZAutoModel.RequestQuote" FromRole="Quote" ToRole="Request" />
+          <NavigationProperty Name="RepairShop" Relationship="EZAutoModel.RepairShopQuote" FromRole="Quote" ToRole="RepairShop" />
+        </EntityType>
+        <Association Name="PersonRequest">
+          <End Type="EZAutoModel.Person" Role="Person" Multiplicity="1" />
+          <End Type="EZAutoModel.Request" Role="Request" Multiplicity="*" />
+        </Association>
+        <Association Name="RequestQuote">
+          <End Type="EZAutoModel.Request" Role="Request" Multiplicity="1" />
+          <End Type="EZAutoModel.Quote" Role="Quote" Multiplicity="*" />
+        </Association>
+        <Association Name="RepairShopQuote">
+          <End Type="EZAutoModel.RepairShop" Role="RepairShop" Multiplicity="1" />
+          <End Type="EZAutoModel.Quote" Role="Quote" Multiplicity="*" />
+        </Association>
+        <Association Name="RepairShopPerson">
+          <End Type="EZAutoModel.RepairShop" Role="RepairShop" Multiplicity="0..1" />
+          <End Type="EZAutoModel.Person" Role="Person" Multiplicity="*" />
+        </Association>
+        <Association Name="RepairShopReview">
+          <End Type="EZAutoModel.RepairShop" Role="RepairShop" Multiplicity="1" />
+          <End Type="EZAutoModel.Review" Role="Review" Multiplicity="*" />
+        </Association>
+        <Association Name="PartStoreReview">
+          <End Type="EZAutoModel.PartStore" Role="PartStore" Multiplicity="1" />
+          <End Type="EZAutoModel.Review" Role="Review" Multiplicity="*" />
+        </Association>
+        <Association Name="PartStorePerson">
+          <End Type="EZAutoModel.PartStore" Role="PartStore" Multiplicity="0..1" />
+          <End Type="EZAutoModel.Person" Role="Person" Multiplicity="*" />
+        </Association>
+        <Association Name="PersonSubscription">
+          <End Type="EZAutoModel.Person" Role="Person" Multiplicity="1" />
+          <End Type="EZAutoModel.Subscription" Role="Subscription" Multiplicity="0..1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EZAutoModelStoreContainer" CdmEntityContainer="EZAutoModelContainer">
+    <EntitySetMapping Name="People">
+      <EntityTypeMapping TypeName="IsTypeOf(EZAutoModel.Person)">
+        <MappingFragment StoreEntitySet="People">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subscriptions">
+      <EntityTypeMapping TypeName="IsTypeOf(EZAutoModel.Subscription)">
+        <MappingFragment StoreEntitySet="Subscriptions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RepairShops">
+      <EntityTypeMapping TypeName="IsTypeOf(EZAutoModel.RepairShop)">
+        <MappingFragment StoreEntitySet="RepairShops">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RepairShopName" ColumnName="RepairShopName" />
+          <ScalarProperty Name="RepairShopAddress" ColumnName="RepairShopAddress" />
+          <ScalarProperty Name="RepairShopCity" ColumnName="RepairShopCity" />
+          <ScalarProperty Name="RepairShopState" ColumnName="RepairShopState" />
+          <ScalarProperty Name="RepairShopZip" ColumnName="RepairShopZip" />
+          <ScalarProperty Name="RepairShopPhone" ColumnName="RepairShopPhone" />
+          <ScalarProperty Name="RepairShopEmail" ColumnName="RepairShopEmail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PartStores">
+      <EntityTypeMapping TypeName="IsTypeOf(EZAutoModel.PartStore)">
+        <MappingFragment StoreEntitySet="PartStores">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PartStoreName" ColumnName="PartStoreName" />
+          <ScalarProperty Name="PartStoreAddress" ColumnName="PartStoreAddress" />
+          <ScalarProperty Name="PartStoreCity" ColumnName="PartStoreCity" />
+          <ScalarProperty Name="PartStoreState" ColumnName="PartStoreState" />
+          <ScalarProperty Name="PartStoreZip" ColumnName="PartStoreZip" />
+          <ScalarProperty Name="PartStorePhone" ColumnName="PartStorePhone" />
+          <ScalarProperty Name="PartStoreEmail" ColumnName="PartStoreEmail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reviews">
+      <EntityTypeMapping TypeName="IsTypeOf(EZAutoModel.Review)">
+        <MappingFragment StoreEntitySet="Reviews">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ReviewScore" ColumnName="ReviewScore" />
+          <ScalarProperty Name="ReviewDescription" ColumnName="ReviewDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Requests">
+      <EntityTypeMapping TypeName="IsTypeOf(EZAutoModel.Request)">
+        <MappingFragment StoreEntitySet="Requests">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RequestDescription" ColumnName="RequestDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Quotes">
+      <EntityTypeMapping TypeName="IsTypeOf(EZAutoModel.Quote)">
+        <MappingFragment StoreEntitySet="Quotes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="QuotePrice" ColumnName="QuotePrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="PersonRequest" TypeName="EZAutoModel.PersonRequest" StoreEntitySet="Requests">
+      <EndProperty Name="Person">
+        <ScalarProperty Name="Id" ColumnName="Person_Id" />
+      </EndProperty>
+      <EndProperty Name="Request">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RequestQuote" TypeName="EZAutoModel.RequestQuote" StoreEntitySet="Quotes">
+      <EndProperty Name="Request">
+        <ScalarProperty Name="Id" ColumnName="Request_Id" />
+      </EndProperty>
+      <EndProperty Name="Quote">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RepairShopQuote" TypeName="EZAutoModel.RepairShopQuote" StoreEntitySet="Quotes">
+      <EndProperty Name="RepairShop">
+        <ScalarProperty Name="Id" ColumnName="RepairShop_Id" />
+      </EndProperty>
+      <EndProperty Name="Quote">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RepairShopPerson" TypeName="EZAutoModel.RepairShopPerson" StoreEntitySet="People">
+      <EndProperty Name="RepairShop">
+        <ScalarProperty Name="Id" ColumnName="RepairShop_Id" />
+      </EndProperty>
+      <EndProperty Name="Person">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="RepairShop_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RepairShopReview" TypeName="EZAutoModel.RepairShopReview" StoreEntitySet="Reviews">
+      <EndProperty Name="RepairShop">
+        <ScalarProperty Name="Id" ColumnName="RepairShop_Id" />
+      </EndProperty>
+      <EndProperty Name="Review">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PartStoreReview" TypeName="EZAutoModel.PartStoreReview" StoreEntitySet="Reviews">
+      <EndProperty Name="PartStore">
+        <ScalarProperty Name="Id" ColumnName="PartStore_Id" />
+      </EndProperty>
+      <EndProperty Name="Review">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PartStorePerson" TypeName="EZAutoModel.PartStorePerson" StoreEntitySet="People">
+      <EndProperty Name="PartStore">
+        <ScalarProperty Name="Id" ColumnName="PartStore_Id" />
+      </EndProperty>
+      <EndProperty Name="Person">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="PartStore_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PersonSubscription" TypeName="EZAutoModel.PersonSubscription" StoreEntitySet="People">
+      <EndProperty Name="Subscription">
+        <ScalarProperty Name="Id" ColumnName="Subscription_Id" />
+      </EndProperty>
+      <EndProperty Name="Person">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+            <Condition ColumnName="Subscription_Id" IsNull="false" />
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
