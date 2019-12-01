@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1714jpoulin2h", "1714jpouli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1714jpoulin3a", "1714jpoulin3a\1714jpoulin3a.csproj", "{7BE6DE5A-A0F9-41ED-A93B-7084A14CBAEE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1714jpoulin3b1", "1714jpoulin3b1\1714jpoulin3b1.csproj", "{923764E3-53CC-432D-AE78-E1D95A8D707A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1714jpoulin3b2", "1714jpoulin3b2\1714jpoulin3b2.csproj", "{2E56F8B0-0E52-4B52-BD6A-A8C763966426}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{7BE6DE5A-A0F9-41ED-A93B-7084A14CBAEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BE6DE5A-A0F9-41ED-A93B-7084A14CBAEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BE6DE5A-A0F9-41ED-A93B-7084A14CBAEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{923764E3-53CC-432D-AE78-E1D95A8D707A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{923764E3-53CC-432D-AE78-E1D95A8D707A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{923764E3-53CC-432D-AE78-E1D95A8D707A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{923764E3-53CC-432D-AE78-E1D95A8D707A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E56F8B0-0E52-4B52-BD6A-A8C763966426}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E56F8B0-0E52-4B52-BD6A-A8C763966426}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E56F8B0-0E52-4B52-BD6A-A8C763966426}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E56F8B0-0E52-4B52-BD6A-A8C763966426}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
